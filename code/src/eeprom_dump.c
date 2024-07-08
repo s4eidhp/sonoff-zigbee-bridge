@@ -12,7 +12,7 @@
 void dump_to_file(const char *output_file_path,
                   const uint8_t *buffer, const int buffer_length)
 {
-        int output_file = open(output_file_path, O_RDWR|O_APPEND|O_CREAT);
+        int output_file = open(output_file_path, O_RDWR|O_APPEND|O_CREAT, 0644);
         if (output_file < 0) {
                 printf("Failed opening output file %s\n", output_file_path);
                 return;
@@ -24,7 +24,7 @@ void dump_to_file(const char *output_file_path,
 int main(int argc, char *argv[])
 {
     if(argc < 2){
-        printf("usage: ./eeprom_dump <i2c device> <output file>\n");
+        printf("usage: ./eeprom_dump <i2c device>\n");
         return -1;
     }
 
@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
                     return 1;
             }
 
-            dump_to_file(argv[2], buf, READ_SIZE);
+            dump_to_file("dump.bin", buf, READ_SIZE);
     }
 
     close(file);
