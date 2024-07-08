@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <unistd.h>
 #include <fcntl.h>
-
 #include <linux/i2c-dev.h>
-
+#include <sys/ioctl.h> 
 
 #define READ_SIZE       (128)
 #define NB_PAGES        (512)
